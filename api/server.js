@@ -15,7 +15,6 @@ server.get('/', (req, res) => {
     `)
 })
 
-
 //places /api as an endpoint in all the urls
 //server.use('/api', router)
 
