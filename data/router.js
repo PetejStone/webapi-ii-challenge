@@ -100,6 +100,8 @@ router.delete('/:id', async (req, res) => {
         res.status(500).json({error: "The post could not be removed" })
     }
 
+
+
     // try {
     //   const count = await Posts.remove(req.params.id);
     //   if (count > 0) {
@@ -114,6 +116,24 @@ router.delete('/:id', async (req, res) => {
     //     message: 'Error removing the hub',
     //   }); }
     
+  });
+
+  //put
+  router.put('/:id', async (req, res) => {
+    try {
+      const post = await Posts.update(req.params.id, req.body);
+      if (post) {
+        res.status(200).json(post);
+      } else {
+        res.status(404).json({ message: "The post with the specified ID does not exist."  });
+      }
+    } catch (error) {
+      // log error to database
+      console.log(error);
+      res.status(500).json({
+        error: "The post information could not be modified." ,
+      });
+    }
   });
 
 
