@@ -85,6 +85,37 @@ router.post('/:id/comments', async (req, res) => {
     // }
 })
 
+//delete
+
+router.delete('/:id', async (req, res) => {
+    try { // try is like using 'then' when testing a conditional parameter
+        const id = await Posts.remove(req.params.id); // setting id to retrieve the id from params
+
+        if (id) { // id id exists in database
+            res.status(200).json({message: 'You hae succesfully deleted'}); //return the item with the id
+        } else { //else, return error
+            res.status(404).json({ message: "The post with the specified ID does not exist." })
+        }
+    } catch (error) { //catch 
+        res.status(500).json({error: "The post could not be removed" })
+    }
+
+    // try {
+    //   const count = await Posts.remove(req.params.id);
+    //   if (count > 0) {
+    //     res.status(200).json({ message: 'The hub has been nuked' });
+    //   } else {
+    //     res.status(404).json({ message: 'The hub could not be found' });
+    //   }
+    // } catch (error) {
+    //   // log error to database
+    //   console.log(error);
+    //   res.status(500).json({
+    //     message: 'Error removing the hub',
+    //   }); }
+    
+  });
+
 
 
 module.exports = router;
