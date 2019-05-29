@@ -102,19 +102,7 @@ router.post('/:id/comments', async (req, res) => {
 
 
 router.delete('/:id', async (req, res) => {
-   // const id = await Posts.findById(req.params.id); 
-    //if (!id) { res.status(404).json({  message: "The post with the specified ID does not exist." })}
-    // try { // try is like using 'then' when testing a conditional parameter
-    //     //const id = await Posts.remove(req.params.id); // setting id to retrieve the id from params
-    //     const id = await Posts.findById(req.params.id); 
-    //     //await Posts.remove(id)
-    //     if (id) { // id id exists in database
-    //         res.status(200).json({message: 'You have succesfully deleted'}); //return the item with the id
-    //     } else { //else, return error
-    //         res.status(404).json({ message: "The post with the specified ID does not exist." })
-    //     }
-    // } catch (error) { //catch 
-    //     res.status(500).json({error: "The post could not be removed" })
+ 
     // }
     try { // try is like using 'then' when testing a conditional parameter
         const post = await Posts.findById(req.params.id);
@@ -134,23 +122,7 @@ router.delete('/:id', async (req, res) => {
 
   //put
   router.put('/:id', async (req, res) => {
-    // try {
-    //   const post = await Posts.update(req.params.id, req.body);
-    //   const id = req.params.id
-    //   const body = req.body
-    //   if (post) {
-    //     console.log(id)
-    //     res.status(200).json(post);
-    //   } else if (id) {
-    //     res.status(404).json({ message: "The post with the specified ID does not exist."  });
-    //   }
-    // } catch (error) {
-    //   // log error to database
-    //   console.log(error);
-    //   res.status(500).json({
-    //     error: "The post information could not be modified." ,
-    //   });
-    // }
+  
 
     if (!req.body.title || !req.body.contents) {res.status(400).json({errorMessage: "Please provide title and contents for the post." }) }
 
@@ -172,14 +144,3 @@ router.delete('/:id', async (req, res) => {
 ///WORKING
 
 module.exports = router;
-//try {
-    //         const post = await Posts.insert(req.body);
-    //         res.status(201).json(post);
-    //       } catch (error) {
-    //         // log error to database
-    //         console.log(error);
-    //         res.status(500).json({
-    //           message: 'Error adding the hub',
-    //         });
-    //       }
-    // })
