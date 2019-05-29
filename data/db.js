@@ -18,7 +18,7 @@ function find() {
 }
 
 function findById(id) {
-  return db('posts').where({ id }).first();  //.first() needed for conditional 404 error to render
+  return db('posts').where( 'id', Number(id) )//.first() needed for conditional 404 error to render
 }
 
 function insert(post) {
@@ -43,7 +43,7 @@ function findPostComments(postId) {
   return db('comments')
     .join('posts', 'posts.id', 'post_id')
     .select('comments.*', 'title as post')
-    .where('post_id', postId).first();
+    .where('post_id', postId)
     
 }
 
